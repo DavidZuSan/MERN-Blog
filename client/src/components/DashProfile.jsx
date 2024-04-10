@@ -1,15 +1,20 @@
 import { Alert, Button, TextInput } from 'flowbite-react';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { 
+  getDownloadURL, 
+  getStorage, 
+  ref, 
+  uploadBytesResumable 
+} from 'firebase/storage';
 import { app } from '../firebase';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 export default function DashProfile() {
   const { currentUser } = useSelector((state) => state.user);
-  const [imageFile, setImageFile] = useState('null');
-  const [imageFileUrl, setImageFileUrl] = useState('null');
+  const [imageFile, setImageFile] = useState(null);
+  const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
   const filePickerRef = useRef();
