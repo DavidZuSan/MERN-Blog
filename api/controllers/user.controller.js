@@ -38,7 +38,8 @@ export const updateUser = async (req, res, next) => {
                     profilePic: req.body.profilePic,
                     password: req.body.password,
                 },
-            }, { new: true });
+            }, { new: true }
+        );
             const { password, ...rest } = updatedUser._doc;
             res.status(200).json(rest);
         } catch (error) {
@@ -56,3 +57,12 @@ export const deleteUser = async (req, res, next) => {
         next(error);
     }
 };
+
+export const signout = (req, res, next) => {
+    try {
+        res.clearCookie("access_token").status(200).json("User has been signed out");
+    }
+    catch (error) {
+        next(error);
+    }
+}; 
